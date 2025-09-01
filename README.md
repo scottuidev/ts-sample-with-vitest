@@ -95,7 +95,7 @@ When “type” is set to "module", the type field allows a package to specify a
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "paths": { "@/*": ["./src/*"] },
+    "paths": { "@src/*": ["./src/*"] },
     "target": "esnext",
     "types": ["vitest/globals"],
   },
@@ -110,10 +110,10 @@ When “type” is set to "module", the type field allows a package to specify a
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  // Allows imports using @ in tests
+  // Allows imports using @src in tests
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@src": path.resolve(__dirname, "./src"),
     },
   },
   test: {
@@ -152,7 +152,7 @@ describe("sampleFunction test", () => {
 In `tsconfig.json` this line:
 
 ```JSON
-"paths": { "@/*": ["./src/*"] },
+"paths": { "@src/*": ["./src/*"] },
 ```
 
 sets up a path alias for module imports. This tells TypeScript that anything starting with @/ should resolve to the src/ directory.
@@ -161,7 +161,7 @@ Example from `src/__tests__/index.test.ts`
 
 ```TypeScript
 // This line:
-import { sampleFunction } from "@/index.js";
+import { sampleFunction } from "@src/index.js";
 // is the same as:
 import { sampleFunction } from "../index.js";
 ```

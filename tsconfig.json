@@ -6,7 +6,7 @@
     "outDir": "./dist",
     // next line allows imports using @ instead of path like:
     //   import utils from "@/utils/helpers";
-    "paths": { "@/*": ["./src/*"] },
+    "paths": { "@src/*": ["./src/*"] },
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",

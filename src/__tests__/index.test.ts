@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { sampleFunction } from "@/index.js";
+import { sampleFunction } from "@src/index.js";
 
 describe("sampleFunction test", () => {
   it("should return the correct value", () => {
