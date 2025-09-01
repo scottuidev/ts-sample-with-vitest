@@ -57,9 +57,9 @@ npm start
 - `tsconfig.json` — TypeScript configuration
 - `vitest.config.ts` — Vitest configuration
 
---Stop here--
+## Dev notes
 
-## Commands to create this from scratch
+### Commands to create this from scratch
 
 ```bash
 mkdir ts-sample-with-vitest
@@ -88,14 +88,14 @@ mkdir src/__test__
 
 When “type” is set to "module", the type field allows a package to specify all .js files within are ES modules. If the "type" field is omitted or set to "commonjs", all .js files are treated as CommonJS.
 
-#### Configure `tsconfig.json` for ESM and vitest
+#### Configure `tsconfig.json` for ESM, vitest
 
 ```JSON
 {
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "paths": { "@/*": ["./src/*"] }, // allow imports using @
+    "paths": { "@/*": ["./src/*"] },
     "target": "esnext",
     "types": ["vitest/globals"],
   },
@@ -143,4 +143,25 @@ describe("sampleFunction test", () => {
     expect(sampleFunction(2, 3)).toBe(5);
   });
 });
+```
+
+## Other notes
+
+### TS config path alias
+
+In `tsconfig.json` this line:
+
+```JSON
+"paths": { "@/*": ["./src/*"] },
+```
+
+sets up a path alias for module imports. This tells TypeScript that anything starting with @/ should resolve to the src/ directory.
+
+Example from `src/__tests__/index.test.ts`
+
+```TypeScript
+// This line:
+import { sampleFunction } from "@/index.js";
+// is the same as:
+import { sampleFunction } from "../index.js";
 ```
