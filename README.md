@@ -95,9 +95,7 @@ When “type” is set to "module", the type field allows a package to specify a
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    // next line allows imports using @ instead of path like
-    //   import utils from "@/utils/helpers"
-    "paths": { "@/*": ["./src/*"] },
+    "paths": { "@/*": ["./src/*"] }, // allow imports using @
     "target": "esnext",
     "types": ["vitest/globals"],
   },
@@ -112,7 +110,7 @@ When “type” is set to "module", the type field allows a package to specify a
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  // Allows using imports with @ in tests
+  // Allows imports using @ in tests
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
